@@ -1,0 +1,34 @@
+{% extends 'empty.html' %}
+
+{% block css %}
+    .active3{
+    background-color: #00aaf1
+    }
+{% endblock %}
+
+{% block content %}
+    <form action="/yuqing/zj/" method="post">
+        <input align = "center" type="text" name="key2">
+        <button type="submit" >新增关键词</button>
+    </form>
+    <div class="col-md-12 graphs" >
+	   <div class="xs">
+  	<div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+         <tr>
+            <th style="text-align: center " >序号</th>
+            <th style="text-align: center ">关键词</th>
+            <th style="text-align: center ">删除</th>
+        </tr>
+      </thead>
+        <tbody class="fl-table">
+            {% for row in new_list %}
+            <tr>
+                <td  align="center">{{row.id}}</td>
+                <td  align="center">{{row.gjc}}</td>
+                <td  align="center"><a href="/yuqing/sc?nid={{row.id}}">删除</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+{% endblock %}

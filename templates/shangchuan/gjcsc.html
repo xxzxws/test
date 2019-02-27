@@ -1,0 +1,8 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h3 class="page-header">公交车工单数据上传</h3>
+    <form action="{% url 'gjcsc' %}" method="post" enctype="multipart/form-data">
+        <input type="file" name="my_xzfile">
+        <input type="submit">
+   </form>
+{% endblock %}

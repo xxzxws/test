@@ -1,0 +1,33 @@
+{% extends 'empty.html' %}
+{% block css %}
+
+
+
+{% endblock %}
+
+{% block content %}
+{#<h2><img src="/static/images/logo1.JPEG" style="width:60px;height:60px; align:center;">舆情查询 </h2>#}
+<form method="post">
+        <input align = "center" type="text" name="key2"><button type="submit">新增关键词</button><a  href="http://10.9.96.217:5000/zsyq" fontsize="10" >舆情查询</a>
+    </form>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>关键词</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody class="fl-table">
+            {% for row in new_list %}
+            <tr>
+                <td  align="center">{{row.id}}</td>
+                <td  align="center">{{row.gjc}}</td>
+                <td  align="center"><a href="http://10.9.96.217:5000/sc?nid={{row.id}}">删除</a></td>
+            </tr>
+            {% endfor %}
+        <tbody>
+    </table>
+</div>
+{% endblock %}

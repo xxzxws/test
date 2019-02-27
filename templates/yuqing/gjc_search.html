@@ -1,0 +1,27 @@
+{% extends 'empty.html' %}
+{% block css %}
+    .active2{
+    background-color: #00aaf1
+    }
+{% endblock %}
+
+{% block content %}
+        <div class="graphs">
+	     <div class="xs">
+        <div class="col-md-8 inbox_right" style="height:600px;margin-left:150px;margin-top: 100px">
+         	<form action="/yuqing/gjc_list/" method="POST">
+                <div class="input-group">
+                    <input type="text" name="key" class="form-control1 input-search" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div><!-- Input Group -->
+            </form>
+        </div>
+            <div class="clearfix"> </div>
+       </div>
+    </div>
+      {% endblock %}
+
+
+

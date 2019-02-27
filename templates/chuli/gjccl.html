@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h3 class="page-header">公交车数据处理</h3>
+    <div class="row">
+    <form action="{% url 'gjccl' %}" method="post" enctype="multipart/form-data">
+                <div class="row" >
+                    <div class="col-md-1" style="font-size: 23">处理日期:</div>
+                　　<div class="input-append date fl col-md-3"  >
+                        <input type="date" name="start" class="form-control" >
+                        <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+{#                    <span class="input-append date fl col-md-1">至</span>#}
+                    <div class="input-append date fl col-md-3"  >
+                         <input type="date" class="form-control"  name="end">
+                         <span class="add-on"><i class="icon-th"></i></span>
+                    </div>
+                    <input type="submit" class="btn btn-primary" >
+                </div>
+   </form>
+    </div>
+{% endblock %}
