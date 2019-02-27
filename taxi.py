@@ -7,7 +7,7 @@ import datetime
 def handle(start,end):
     start_time=str(start)+' 00:00:00'
     end_time = str(end)+' 23:59:59'
-    db= pymysql.connect(host="10.9.96.233",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
     try:
         with db.cursor() as cursor:
             sql="select * from rxgl_czc where slsj between '{}' and '{}'".format(start_time,end_time)
@@ -170,7 +170,7 @@ def handle(start,end):
         i+=1
 
 
-    db= pymysql.connect(host="10.9.96.233",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
     with db:
         cur=db.cursor()
         sql = "INSERT INTO rxgl_taxi(gdbh,tsrq,company,taxi_number,sfrq,geton_time,geton_address,getoff_time,getoff_address,sqlb,slnr,czlx) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"

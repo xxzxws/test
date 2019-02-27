@@ -1,4 +1,4 @@
-{% extends 'empty.html' %}
+{% extends 'index.html' %}
 
 {% block css %}
     .active3{
@@ -26,7 +26,7 @@
             {% for row in new_list %}
             <tr>
                 <td  align="center">{{row.id}}</td>
-                <td  align="center">{{row.gjc}}</td>
+                <td  align="center">{{row.title}}</td>
                 <td  align="center"><a href="/yuqing/sc?nid={{row.id}}">删除</a></td>
             </tr>
             {% endfor %}
