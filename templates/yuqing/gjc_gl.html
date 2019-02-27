@@ -7,10 +7,25 @@
 {% endblock %}
 
 {% block content %}
-    <form action="/yuqing/zj/" method="post">
-        <input align = "center" type="text" name="key2">
-        <button type="submit" >新增关键词</button>
-    </form>
+{#    <form action="/yuqing/zj/" method="post">#}
+{#        <input align = "center" type="text" name="key2">#}
+{#        <button type="submit" >新增关键词</button>#}
+{#    </form>#}
+              <div class="panel-body">
+                <form action="{% url 'zj' %}" method="post" enctype="multipart/form-data">
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="key2" placeholder="Search for...">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">新增关键词</button>
+                              </span>
+                            </div><!-- /input-group -->
+                        </div><!-- /.col-lg-6 -->
+                </form>
+              </div>
+
+
+
     <div class="col-md-12 graphs" >
 	   <div class="xs">
   	<div class="table-responsive">
@@ -22,7 +37,7 @@
             <th style="text-align: center ">删除</th>
         </tr>
       </thead>
-        <tbody class="fl-table">
+        <tbody class="table table-striped">
             {% for row in new_list %}
             <tr>
                 <td  align="center">{{row.id}}</td>
