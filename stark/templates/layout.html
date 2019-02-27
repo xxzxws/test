@@ -19,54 +19,55 @@
         <div class="logo-area left ">
             <a href="#">
                 <img class="logo" src="{% static 'stark/imgs/logo.svg' %}">
-                <span style="font-size: 18px;">路飞学城 </span>
+                <span style="font-size: 18px;">热线数据管理 </span>
             </a>
         </div>
 
         <div class="left-menu left">
-            <a class="menu-item">资产管理</a>
-            <a class="menu-item">用户信息</a>
-            <a class="menu-item">路飞管理</a>
-            <div class="menu-item">
-                <span>使用说明</span>
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
-                <div class="more-info">
-                    <a href="#" class="more-item">管他什么菜单</a>
-                    <a href="#" class="more-item">实在是编不了</a>
-                </div>
-            </div>
+{#            <a class="menu-item">资产管理</a>#}
+{#            <a class="menu-item">用户信息</a>#}
+{#            <a class="menu-item">路飞管理</a>#}
+{#            <div class="menu-item">#}
+{#                <span>使用说明</span>#}
+{#                <i class="fa fa-caret-down" aria-hidden="true"></i>#}
+{#                <div class="more-info">#}
+{#                    <a href="#" class="more-item">管他什么菜单</a>#}
+{#                    <a href="#" class="more-item">实在是编不了</a>#}
+{#                </div>#}
+{#            </div>#}
         </div>
 
         <div class="right-menu right clearfix">
 
             <div class="user-info right">
-                <a href="#" class="avatar">
+
+                <a href="#" class="avatar">{{ request.user }}
                     <img class="img-circle" src="{% static 'stark/imgs/default.png' %}">
                 </a>
 
                 <div class="more-info">
                     <a href="#" class="more-item">个人信息</a>
-                    <a href="#" class="more-item">注销</a>
+                    <a href="{% url 'logout' %}" class="more-item">注销</a>
                 </div>
             </div>
 
-            <a class="user-menu right">
-                消息
-                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                <span class="badge bg-success">2</span>
-            </a>
-
-            <a class="user-menu right">
-                通知
-                <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                <span class="badge bg-success">2</span>
-            </a>
-
-            <a class="user-menu right">
-                任务
-                <i class="fa fa-bell-o" aria-hidden="true"></i>
-                <span class="badge bg-danger">4</span>
-            </a>
+{#            <a class="user-menu right">#}
+{#                消息#}
+{#                <i class="fa fa-commenting-o" aria-hidden="true"></i>#}
+{#                <span class="badge bg-success">2</span>#}
+{#            </a>#}
+{##}
+{#            <a class="user-menu right">#}
+{#                通知#}
+{#                <i class="fa fa-envelope-o" aria-hidden="true"></i>#}
+{#                <span class="badge bg-success">2</span>#}
+{#            </a>#}
+{##}
+{#            <a class="user-menu right">#}
+{#                任务#}
+{#                <i class="fa fa-bell-o" aria-hidden="true"></i>#}
+{#                <span class="badge bg-danger">4</span>#}
+{#            </a>#}
         </div>
 
     </div>
@@ -74,7 +75,22 @@
 <div class="pg-body">
     <div class="left-menu">
         <div class="menu-body">
+<div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+                 {% for role in request.user.userprofile.roles.all %}
+                 {% for  menu in role.menus.all %}
+{#                        <li><a href="{% if menu.url_type == 0 %}{{ menu.url_name }}{% else %}{% url menu.url_name %}{% endif %}">{{ menu.name }}</a></li>#}
+                       {% if menu.url_type == 1 %}
+                           <li><a href="{% url menu.url_name %}">{{ menu.name }}</a></li>
+                        {% else %}
+                           <li><a href="{{ menu.url_name }}" target="_blank">{{ menu.name }}</a></li>
+                       {% endif %}
+{#                        <li><a href="{% if menu.url_type == 0 %}{{ menu.url_name }}{% else %}{% url menu.url_name %}{% endif %}">{{ menu.name }}</a></li>#}
 
+                 {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
         </div>
     </div>
     <div class="right-body">

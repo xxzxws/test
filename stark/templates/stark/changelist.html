@@ -87,3 +87,19 @@
     </div>
 
 {% endblock %}
+
+{% block js %}
+<script>
+
+   $("#choice").click(function () {
+
+     if($(this).prop("checked")){
+           $(".choice_item").prop("checked",true)
+     }else {
+           $(".choice_item").prop("checked",false)
+     }
+
+   })
+
+</script>
+{% endblock %}

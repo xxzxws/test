@@ -170,8 +170,8 @@ class StarkHandler(object):
         :return:
         """
         if is_header:
-            return "选择"
-        return mark_safe('<input type="checkbox" name="pk" value="%s" />' % obj.pk)
+            return mark_safe('<input id="choice" type="checkbox">')
+        return mark_safe('<input type="checkbox" name="pk" value="%s" class="choice_item" />' % obj.pk)
 
     def display_edit(self, obj=None, is_header=None):
         """
@@ -301,7 +301,7 @@ class StarkHandler(object):
         conn.connector = 'OR'
         if search_value:
             for item in search_list:
-                conn.children.append((item, search_value))
+                conn.children.append((item+"__contains", search_value))
 
         # ########## 3. 获取排序 ##########
         order_list = self.get_order_list()

@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url,include
 from  . import views
-
+from stark.service.v1 import site
 urlpatterns = [
     url(r'^admin/', admin.site.urls,name ='admin'),
     url(r'^login/', views.acc_login,name='login'),
     url(r'^logout/', views.acc_logout,name='logout'),
     url(r'^rxgl/', include('rxgl.urls')),
     url(r'^yuqing/', include('yuqing.urls')),
+    url(r'^stark/', site.urls),
 
 ]

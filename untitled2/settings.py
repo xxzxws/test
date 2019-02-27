@@ -25,7 +25,7 @@ SECRET_KEY = 'v%6ie-x9r%158^_8_e!es7th53q(t30xri0o%cn_o_r8^d5$%p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["10.9.96.217","127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rxgl.apps.RxglConfig',
-    'yuqing.apps.YuqingConfig'
+    'yuqing.apps.YuqingConfig',
+    'stark.apps.StarkConfig',
 ]
 
 MIDDLEWARE = [
