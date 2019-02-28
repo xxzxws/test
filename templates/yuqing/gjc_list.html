@@ -26,7 +26,7 @@
         <tbody class="fl-table">
             {% for row in new_list %}
             <tr>
-                <th width="100" align="center" scope="row">{{row.id}}</th>
+                <th width="100" align="center" scope="row">{{ forloop.counter }}</th>
                 <td><a href="{{row.url}}"  target="_blank" style=" cursor: pointer">{{row.title}}</a></td>
                 <td width="100" align="center">{{row.hf}}</td>
                 <td width="100" align="center">{{row.ck}}</td>

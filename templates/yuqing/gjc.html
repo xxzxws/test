@@ -1,8 +1,6 @@
 {% extends 'index.html' %}
 {% block css %}
 
-
-
 {% endblock %}
 
 {% block content %}
@@ -22,8 +20,8 @@
         <tbody class="fl-table">
             {% for row in new_list %}
             <tr>
-                <td  align="center">{{row.id}}</td>
-                <td  align="center">{{row.gjc}}</td>
+                <td  align="center">{{ forloop.counter }}</td>
+                <td  align="center">{{row.title}}</td>
                 <td  align="center"><a href="http://10.9.96.217:5000/sc?nid={{row.id}}">删除</a></td>
             </tr>
             {% endfor %}
