@@ -4,7 +4,7 @@ from django.db import models
 
 class yqin(models.Model):
     '''咨询投诉列表'''
-    publish_time = models.CharField(max_length=32,unique=True,verbose_name='发布时间')
+    publish_time = models.CharField(max_length=32,verbose_name='发布时间')
     title = models.CharField(max_length=300,verbose_name='标题')
     hf = models.CharField(max_length=30,verbose_name='回复数量')
     ck = models.CharField(max_length=32,verbose_name='查看量')
@@ -22,7 +22,7 @@ class yqin(models.Model):
 
 class yqout(models.Model):
     '''咨询投诉列表'''
-    publish_time = models.CharField(max_length=32,unique=True,verbose_name='发布时间')
+    publish_time = models.CharField(max_length=32,verbose_name='发布时间')
     title = models.CharField(max_length=300,verbose_name='标题')
     hf = models.CharField(max_length=30,verbose_name='回复数量')
     ck = models.CharField(max_length=32,verbose_name='查看量')
@@ -40,7 +40,7 @@ class yqout(models.Model):
 
 class yqin1(models.Model):
     '''咨询投诉列表'''
-    publish_time = models.CharField(max_length=32,unique=True,verbose_name='发布时间')
+    publish_time = models.CharField(max_length=32,verbose_name='发布时间')
     title = models.CharField(max_length=300,verbose_name='标题')
     hf = models.CharField(max_length=30,verbose_name='回复数量')
     ck = models.CharField(max_length=32,verbose_name='查看量')
@@ -58,7 +58,7 @@ class yqin1(models.Model):
 
 class yqout1(models.Model):
     '''咨询投诉列表'''
-    publish_time = models.CharField(max_length=32,unique=True,verbose_name='发布时间')
+    publish_time = models.CharField(max_length=32,verbose_name='发布时间')
     title = models.CharField(max_length=300,verbose_name='标题')
     hf = models.CharField(max_length=30,verbose_name='回复数量')
     ck = models.CharField(max_length=32,verbose_name='查看量')
