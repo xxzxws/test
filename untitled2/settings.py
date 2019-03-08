@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rxgl.apps.RxglConfig',
     'yuqing.apps.YuqingConfig',
     'stark.apps.StarkConfig',
+    'rbac.apps.RbacConfig',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rbac.middlewares.rbac.RbacMiddleware',
 ]
 
 ROOT_URLCONF = 'untitled2.urls'
@@ -80,7 +82,7 @@ WSGI_APPLICATION = 'untitled2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-        'NAME': 'rxgl',  # 你要存储数据的库名，事先要创建之
+        'NAME': 'perferctcrm',  # 你要存储数据的库名，事先要创建之
         'USER': 'root',  # 数据库用户名
         'PASSWORD': '1234',  # 密码
         'HOST': 'localhost',  # 主机
@@ -129,3 +131,27 @@ STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'static'),
 )
 
+RBAC_USER_MODLE_CLASS = "rxgl.models.UserInfo"
+
+AUTO_DISCOVER_EXCLUDE = [
+            '/admin/.*',
+            '/login/',
+            '/logout/',
+            '/index/',
+        ]
+PERMISSION_SESSION_KEY = "luffy_permission_url_list_key"
+MENU_SESSION_KEY = "luffy_permission_menu_key"
+
+NO_PERMISSION_LIST = [
+    '/index/',
+    '/logout/',
+]
+#
+VALID_URL_LIST = [
+    '/login/',
+    '/admin/.*'
+]
+
+USER_MODLE_PATH = "rxgl.models.UserInfo"
+
+LOGIN_REDIRECT_URL = '/index/'

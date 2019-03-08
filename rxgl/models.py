@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from rbac.models import *
 
 class czc(models.Model):
     '''咨询投诉列表'''
@@ -28,7 +28,7 @@ class czc(models.Model):
 class taxi(models.Model):
     '''咨询投诉列表'''
     gdbh = models.CharField(max_length=64,unique=True,verbose_name='工单编号')
-    tsrq = models.DateTimeField(max_length=30,verbose_name='投诉日期')
+    tsrq = models.DateField(max_length=30,verbose_name='投诉日期')
     company_choice = (
         ("巴士出租","巴士出租"),
         ("常运出租","常运出租"),
@@ -117,7 +117,7 @@ class gjc(models.Model):
 class bus(models.Model):
     '''咨询投诉列表'''
     gdbh = models.CharField(max_length=64, unique=True, verbose_name='工单编号')
-    tsrq = models.DateTimeField(max_length=30, verbose_name='投诉日期')
+    tsrq = models.DateField(max_length=30, verbose_name='投诉日期')
     lb = models.CharField(max_length=30, verbose_name='线路')
     bus_number = models.CharField(max_length=64, verbose_name='车牌号')
     bus_zbh = models.CharField(max_length=64, verbose_name='自编号')
@@ -154,41 +154,57 @@ class bus(models.Model):
         verbose_name = '公交车整理信息'
         verbose_name_plural = '公交车整理信息'
 
-class Menus(models.Model):
-    '''动态菜单'''
-    name = models.CharField(max_length=32)
-    url_type_choices = ((0,'absolute'),(1,'dynamic'),)
-    url_type = models.SmallIntegerField(choices=url_type_choices,default=0)
-    url_name = models.CharField(max_length=64,unique=True)
-    def __str__(self):
-        return self.name
-    class Meta:
-        unique_together =('name','url_name')
-        verbose_name='菜单名'
-        verbose_name_plural='菜单名'
-
-
-class UserProfile(models.Model):
+class User(models.Model):
     '''用户信息表'''
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(to=UserInfo,null=True)
     name = models.CharField(max_length=32)
-    roles = models.ManyToManyField('Role',blank=True)
+    # roles = models.ManyToManyField('Role',blank=True)
+    phone = models.CharField(verbose_name='联系方式', max_length=32)
+    level_choices = (
+        (1, '主任'),
+        (2, '科长'),
+        (3, '副科'),
+        (4, '科员'),
+        (5, '职工'),
+    )
+    level = models.IntegerField(verbose_name='级别', choices=level_choices)
+
+    depart = models.ForeignKey(verbose_name='部门', to='department')
+
+
+class department(models.Model):
+    title = models.CharField(verbose_name="部门", max_length=64)
 
     def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name='账号表'
-        verbose_name_plural='账号表'
-
-
-class Role(models.Model):
-    '''角色表'''
-    name = models.CharField(max_length=32,unique=True)
-    menus = models.ManyToManyField("Menus",blank=True)
-
-    def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
-        verbose_name='角色表'
-        verbose_name_plural='角色表'
+        verbose_name = '部门表'
+        verbose_name_plural = '部门表'
+
+
+# class Menus(models.Model):
+#     '''动态菜单'''
+#     name = models.CharField(max_length=32)
+#     url_type_choices = ((0,'absolute'),(1,'dynamic'),)
+#     url_type = models.SmallIntegerField(choices=url_type_choices,default=0)
+#     url_name = models.CharField(max_length=64,unique=True)
+#     def __str__(self):
+#         return self.name
+#     class Meta:
+#         unique_together =('name','url_name')
+#         verbose_name='菜单名'
+#         verbose_name_plural='菜单名'
+
+
+# class Role(models.Model):
+#     '''角色表'''
+#     name = models.CharField(max_length=32,unique=True)
+#     menus = models.ManyToManyField("Menus",blank=True)
+#
+#     def __str__(self):
+#         return self.name
+#
+#     class Meta:
+#         verbose_name='角色表'
+#         verbose_name_plural='角色表'

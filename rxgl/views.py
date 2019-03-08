@@ -7,7 +7,7 @@ from bus import bus_handle
 import pandas as pd
 
 
-@login_required
+# @login_required
 def czcsc(request):
     if request.method == "GET":
         return render(request, 'shangchuan/czcsc.html')
@@ -47,7 +47,7 @@ def czcsc(request):
         return render(request,"nomal.html",{'msg':'上传成功'})
 
 
-@login_required
+# @login_required
 def gjcsc(request):
     if request.method == "GET":
         return render(request, 'shangchuan/gjcsc.html')
@@ -87,12 +87,12 @@ def gjcsc(request):
         return render(request, "nomal.html", {'msg': '上传成功'})
 
 
-@login_required
-def index(request):
-    return render(request,"shangchuan/dashboard.html")
+# @login_required
+# def index(request):
+#     return render(request,"shangchuan/dashboard.html")
 
 
-@login_required
+# @login_required
 def czccl(request):
     if request.method =="GET":
         return render(request,'chuli/czccl.html')
@@ -100,6 +100,7 @@ def czccl(request):
         try:
             start = request.POST.get("start")
             end = request.POST.get("end")
+            title = request.POST.get("title")
             print(start,end)
             handle(start,end)
             print(1)
@@ -109,7 +110,7 @@ def czccl(request):
             return render(request,"nomal.html", {'msg': '出错请核查'})
 
 
-@login_required
+# @login_required
 def gjccl(request):
     if request.method =="GET":
         return render(request,'chuli/gjccl.html')

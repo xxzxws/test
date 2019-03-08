@@ -21,8 +21,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls,name ='admin'),
     url(r'^login/', views.acc_login,name='login'),
     url(r'^logout/', views.acc_logout,name='logout'),
+    url(r'^index/', views.acc_index,name='index'),
+
+
+
     url(r'^rxgl/', include('rxgl.urls')),
     url(r'^yuqing/', include('yuqing.urls')),
     url(r'^stark/', site.urls),
-
+    url(r'^rbac/', include('rbac.urls', namespace='rbac')),
 ]

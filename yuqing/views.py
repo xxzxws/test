@@ -1,15 +1,15 @@
 from django.shortcuts import render,redirect
-from yuqing import models
-import pymysql
+# from yuqing import models
+# import pymysql
 import spy1
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 import os,django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "untitled2.settings")# project_name 项目名称
 django.setup()
 from yuqing import models
 
-@login_required
+
 def yu_list(request):
     # db = pymysql.connect(host="localhost", user="root", password="1234", db="rxgl", port=3306, charset="utf8")
     # cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
@@ -25,7 +25,7 @@ def yu_list(request):
     # db.close()
     return render(request,"yuqing/yu_list.html", { 'new_list':new_list })
 
-@login_required
+
 def gjc_list(request):
     if request.method=="GET":
         return render(request, 'yuqing/gjc_search.html')
@@ -44,7 +44,7 @@ def gjc_list(request):
             return render(request,"yuqing/gjc_list.html", {'new_list':new_list})
 
 
-@login_required
+
 def gjc(request):
     if request.method == "GET":
         # db = pymysql.connect(host="10.9.96.217", user="root", password="1234", db="zh", port=3306, charset="utf8")
@@ -72,13 +72,12 @@ def gjc(request):
         else:
             return redirect("/yuqing/gjc/")
 
-@login_required
+
 def sc(request):
     nid =request.GET.get("nid")
     models.gjc.objects.filter(id = nid).delete()
     return redirect('/yuqing/gjc/')
 
-@login_required
 def zj(request):
     gjc = request.POST.get("key2")
     models.gjc.objects.create(title = gjc)

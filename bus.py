@@ -14,7 +14,7 @@ import pymysql
 def bus_handle(start,end):
     start_time=start+' 00:00:00'
     end_time = end+' 23:59:59'
-    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="perferctcrm",port=3306,charset="utf8")
     try:
         with db.cursor() as cursor:
             sql="SELECT * FROM rxgl_gjc where slsj between '{}' and '{}'".format(start_time,end_time)
@@ -180,7 +180,7 @@ def bus_handle(start,end):
             df_bus2.loc[i,'下车地点'] = setoff_add[0]
         i+=1
 
-    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="perferctcrm",port=3306,charset="utf8")
     with db:
         cur=db.cursor()
         sql = "INSERT INTO rxgl_bus(gdbh,tsrq,lb,bus_number,bus_zbh,sfrq,wait_time,geton_time,geton_address,getoff_time,getoff_address,sqlb,slnr) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"

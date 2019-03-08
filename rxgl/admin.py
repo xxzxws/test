@@ -57,16 +57,16 @@ class busAdmin(admin.ModelAdmin):
     date_hierarchy = 'tsrq'
 
 
-class MenusAdmin(admin.ModelAdmin):
-    list_display=('name','url_name')
+# class MenusAdmin(admin.ModelAdmin):
+#     list_display=('name','url_name')
 
 
 
 
 admin.site.register(models.czc,czcAdmin)
 admin.site.register(models.gjc,gjcAdmin)
-admin.site.register(models.Menus,MenusAdmin)
+# admin.site.register(models.Menus,MenusAdmin)
 admin.site.register(models.taxi,taxiAdmin)
 admin.site.register(models.bus,busAdmin)
-admin.site.register(models.Role)
-admin.site.register(models.UserProfile)
+# admin.site.register(models.Role)
+# admin.site.register(models.UserInfo)

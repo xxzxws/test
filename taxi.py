@@ -3,14 +3,19 @@ import re
 import pandas as pd
 import datetime
 
+import os,django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "untitled2.settings")# project_name 项目名称
+django.setup()
+from yuqing import models
 
-def handle(start,end):
+def handle(start,end,title):
     start_time=str(start)+' 00:00:00'
     end_time = str(end)+' 23:59:59'
-    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="perferctcrm",port=3306,charset="utf8")
     try:
         with db.cursor() as cursor:
-            sql="select * from rxgl_czc where slsj between '{}' and '{}'".format(start_time,end_time)
+            sql = "select * from rxgl_czc where czlx = '{}' and slsj between '{}' and '{}'".format(title, start_time,
+                                                                                                   end_time)
             cursor.execute(sql)
             result=cursor.fetchall()
     finally:
@@ -170,7 +175,7 @@ def handle(start,end):
         i+=1
 
 
-    db= pymysql.connect(host="localhost",user="root",password="1234",db="rxgl",port=3306,charset="utf8")
+    db= pymysql.connect(host="localhost",user="root",password="1234",db="perferctcrm",port=3306,charset="utf8")
     with db:
         cur=db.cursor()
         sql = "INSERT INTO rxgl_taxi(gdbh,tsrq,company,taxi_number,sfrq,geton_time,geton_address,getoff_time,getoff_address,sqlb,slnr,czlx) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"

@@ -1,16 +1,20 @@
 from stark.service.v1 import StarkHandler,site,Option,get_choice_text
 from rxgl import models
 
+
 class czcConfig(StarkHandler):
     list_display = [StarkHandler.display_checkbox,'gdbh','slsj','sllx','slnr','czlx','zbdw',StarkHandler.display_edit,StarkHandler.display_del]
     action_list = [StarkHandler.action_multi_delete]
     search_list = ['gdbh','sllx','zbdw']
-    # search_group = [
-    #         Option('slr', is_multi=True),
-    #         Option('sllx', db_condition={'id__gt': 0})
-    #     ]
+
 site.register(models.czc,czcConfig)
 
+class gjcConfig(StarkHandler):
+    list_display = [StarkHandler.display_checkbox,'gdbh','slsj','sllx','slnr','zbdw',StarkHandler.display_edit,StarkHandler.display_del]
+    action_list = [StarkHandler.action_multi_delete]
+    search_list = ['gdbh','sllx','zbdw']
+
+site.register(models.gjc,gjcConfig)
 
 class taxiConfig(StarkHandler):
     list_display = [StarkHandler.display_checkbox,'gdbh','sfrq',get_choice_text("公司名称",'company'),'slnr','sqlb','czlx',StarkHandler.display_edit,StarkHandler.display_del]
